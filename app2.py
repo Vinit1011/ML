@@ -16,7 +16,7 @@ from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 
 warnings.filterwarnings("ignore")
-df = pd.read_csv('Dataset.csv')
+data = pd.read_csv('Dataset.csv')
 continuous_cols = ['age', 'trtbps', 'chol', 'thalachh', 'oldpeak']
 categorical_cols = ['sex', 'exng', 'caa', 'cp', 'fbs', 'restecg', 'slp', 'thall']
 X = data.drop(columns=['output']) #Features
