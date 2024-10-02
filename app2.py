@@ -29,7 +29,7 @@ st.set_page_config(page_title='Heart', layout='wide', page_icon="Heart")
 st.title("❤️ Heart Risk Analysis ❤️")
 
 with st.sidebar:
-    selected = option_menu(menu_title="Main Menu",options=["Introduction","Data", "Visualization", "KNN Model","Naive Bayes Model","Conclusion"],icons=["newspaper","coin","basket","receipt","newspaper","receipt"]
+    selected = option_menu(menu_title="Main Menu",options=["Introduction","Data", "Visualization", "KNN Model","Naive Bayes Model","Conclusion","Predictions"],icons=["newspaper","coin","basket","receipt","newspaper","receipt","check-circle"]
                        ,menu_icon="house",default_index=0)
 
 
@@ -215,4 +215,30 @@ if selected == "Conclusion":
     st.write("The precision of 0.87 for presence of heart disease indicates that among all instances predicted as having heart disease, 87% were correctly classified. The recall of 0.90 implies that the model correctly identified 90% of all actual instances of heart disease. The F1-score of 0.88 is the harmonic mean of precision and recall, providing a balanced measure of the classifier's performance. With an accuracy of 0.89, the model correctly classified 89% of the instances in the dataset")
     st.divider()
     st.subheader("Thank you")
+    
+if selected == "Predictions":
+    st.subheader("Predict Patient Risk for Heart Disease")
+    
+    # User input for Naive Bayes prediction
+    age = st.number_input("Age", min_value=0)
+    sex = st.selectbox("Sex", options=[0, 1])
+    cp = st.selectbox("Chest Pain Type", options=[0, 1, 2, 3])
+    trtbps = st.number_input("Resting Blood Pressure (mm Hg)", min_value=0)
+    chol = st.number_input("Cholesterol Level (mg/dl)", min_value=0)
+    fbs = st.selectbox("Fasting Blood Sugar > 120 mg/dl", options=[0, 1])
+    restecg = st.selectbox("Resting ECG Results", options=[0, 1, 2])
+    thalachh = st.number_input("Max Heart Rate", min_value=0)
+    exng = st.selectbox("Exercise Induced Angina", options=[0, 1])
+    oldpeak = st.number_input("Oldpeak", min_value=0.0)
+    slp = st.selectbox("Slope of Peak Exercise ST Segment", options=[1, 2, 3])
+    caa = st.number_input("Number of Major Vessels (0-3)", min_value=0, max_value=3)
+    thall = st.selectbox("Thalassemia", options=[1, 2, 3])
+
+    if st.button("Predict Naive Bayes"):
+        nb_model = GaussianNB()
+        nb_model.fit(X_train, y_train)  # Fit the model
+        input_data = pd.DataFrame([[age, sex, cp, trtbps, chol, fbs, restecg, thalachh, exng, oldpeak, slp, caa, thall]], 
+                                   columns=['age', 'sex', 'cp', 'trtbps', 'chol', 'fbs', 'restecg', 'thalachh', 'exng', 'oldpeak', 'slp', 'caa', 'thall'])
+        prediction = nb_model.predict(input_data)
+        st.write(f"Prediction: {'Has Heart Disease' if prediction[0] == 1 else 'No Heart Disease'}")
 
