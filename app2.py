@@ -16,7 +16,7 @@ from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 st.set_page_config(page_title="Heart Risk Analysis" ,
                    page_icon="❤️",
-                   layout="wide"
+                   layout="wide")
 
 warnings.filterwarnings("ignore")
 data = pd.read_csv('Dataset.csv')
