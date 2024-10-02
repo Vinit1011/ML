@@ -14,9 +14,8 @@ from sklearn.metrics import classification_report
 from sklearn.metrics import accuracy_score
 
 import matplotlib.pyplot as plt
-st.set_page_config(page_title="Heart Risk Analysis" ,
-                   page_icon="❤️",
-                   layout="wide")
+
+
 
 warnings.filterwarnings("ignore")
 data = pd.read_csv('Dataset.csv')
@@ -28,7 +27,7 @@ scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
 
-st.set_page_config(page_title='Heart', layout='wide', page_icon="Heart")
+st.set_page_config(page_title='Heart', layout='wide', page_icon="❤️")
 st.title("❤️ Heart Risk Analysis ❤️")
 
 with st.sidebar:
