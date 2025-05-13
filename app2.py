@@ -233,7 +233,7 @@ if selected == "Predictions":
     exng = st.selectbox("Exercise Induced Angina", options=[0, 1])
     oldpeak = st.number_input("Oldpeak", min_value=0.0)
     slp = st.selectbox("Slope of Peak Exercise ST Segment", options=[0,1,2])
-    caa = st.number_input("Number of Major Vessels (0-3)", min_value=1, max_value=3)
+    caa = st.number_input("Number of Major Vessels (0-3)", min_value=0, max_value=3)
     thall = st.selectbox("Thalassemia", options=[1, 2, 3])
 
     if st.button("Predict Naive Bayes"):
