@@ -26,6 +26,8 @@ y = data['output']
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
+nb_model = GaussianNB()
+nb_model.fit(X_train, y_train) 
 
 st.set_page_config(page_title='Heart', layout='wide', page_icon="❤️")
 st.title("❤️ Heart Risk Analysis ❤️")
@@ -237,8 +239,6 @@ if selected == "Predictions":
     thall = st.selectbox("Thalassemia", options=[1, 2, 3])
 
     if st.button("Predict Naive Bayes"):
-        nb_model = GaussianNB()
-        nb_model.fit(X_train, y_train)  # Fit the model
         input_data = pd.DataFrame([[age, sex, cp, trtbps, chol, fbs, restecg, thalachh, exng, oldpeak, slp, caa, thall]], 
                                    columns=['age', 'sex', 'cp', 'trtbps', 'chol', 'fbs', 'restecg', 'thalachh', 'exng', 'oldpeak', 'slp', 'caa', 'thall'])
         prediction = nb_model.predict(input_data)
