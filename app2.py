@@ -242,7 +242,7 @@ if selected == "Predictions":
         input_data = pd.DataFrame([[age, sex, cp, trtbps, chol, fbs, restecg, thalachh, exng, oldpeak, slp, caa, thall]], 
                                    columns=['age', 'sex', 'cp', 'trtbps', 'chol', 'fbs', 'restecg', 'thalachh', 'exng', 'oldpeak', 'slp', 'caa', 'thall'])
         prediction = nb_model.predict(input_data)
-        if prediction[0]==1:
+        if prediction ==1:
             st.write("More likely to have heart dieases")
         else:
             st.write(" No Heart Disease")
