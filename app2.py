@@ -67,9 +67,9 @@ if selected == "Introduction":
                 - **exng:** Exercise-induced angina (1 = yes, 0 = no)
                 - **oldpeak:** ST depression induced by exercise relative to rest
                 - **slp:** Slope of the peak exercise ST segment
-                    - 1 = upsloping
-                    - 2 = flat
-                    - 3 = downsloping
+                    - 0= upsloping
+                    - 1 = flat
+                    - 2 = downsloping
                 - **caa:** Number of major vessels (0-3)
                 - **thall:** Thalassemia, a blood disorder
                     - 1 = normal
@@ -232,7 +232,7 @@ if selected == "Predictions":
     thalachh = st.number_input("Max Heart Rate", min_value=0)
     exng = st.selectbox("Exercise Induced Angina", options=[0, 1])
     oldpeak = st.number_input("Oldpeak", min_value=0.0)
-    slp = st.selectbox("Slope of Peak Exercise ST Segment", options=[0,1, 2, 3])
+    slp = st.selectbox("Slope of Peak Exercise ST Segment", options=[0,1,2])
     caa = st.number_input("Number of Major Vessels (0-3)", min_value=1, max_value=3)
     thall = st.selectbox("Thalassemia", options=[1, 2, 3])
 
